@@ -1,4 +1,4 @@
-/*
+/*f
  * Copyright (c) 2021, Texas Instruments Incorporated
  * All rights reserved.
  *
@@ -36,7 +36,8 @@ int main(void)
 {
     SYSCFG_DL_init();
 
-    while (1) {
+    while (1)
+    {
         // Toggle the LED every 8 million cycles
         delay_cycles(8000000);
         DL_GPIO_clearPins(LED_PORT, LED_LED0_PIN);
