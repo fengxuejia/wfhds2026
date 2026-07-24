@@ -1,0 +1,12 @@
+[
+   {
+      "directory" : "C:/Users/37558/workspace_ccstheia/01_LED_completed/Debug",
+      "command"   : "clang++ -D__MSPM0G3507__ -D__USE_SYSCONFIG__ -I\"C:/Users/37558/workspace_ccstheia/01_LED_completed\" -I\"C:/Users/37558/workspace_ccstheia/01_LED_completed/Debug\" -I\"C:/TI/mspm0_sdk_2_10_00_04/source/third_party/CMSIS/Core/Include\" -I\"C:/TI/mspm0_sdk_2_10_00_04/source\" -isystem\"E:/ti/ccs2050/ccs/tools/compiler/ti-cgt-armllvm_4.0.4.LTS/include/armv7em-ti-none-eabihf/c++/v1\" -isystem\"E:/ti/ccs2050/ccs/tools/compiler/ti-cgt-armllvm_4.0.4.LTS/include/c++/v1\" -isystem\"E:/ti/ccs2050/ccs/tools/compiler/ti-cgt-armllvm_4.0.4.LTS/lib/clang/18/include\" -isystem\"E:/ti/ccs2050/ccs/tools/compiler/ti-cgt-armllvm_4.0.4.LTS/include/c\" -xc",
+      "file"      : "C:/Users/37558/workspace_ccstheia/01_LED_completed/Debug/ti_msp_dl_config.c"
+   },
+   {
+      "directory" : "C:/Users/37558/workspace_ccstheia/01_LED_completed/Debug",
+      "command"   : "clang++ -D__MSPM0G3507__ -D__USE_SYSCONFIG__ -I\"C:/Users/37558/workspace_ccstheia/01_LED_completed\" -I\"C:/Users/37558/workspace_ccstheia/01_LED_completed/Debug\" -I\"C:/TI/mspm0_sdk_2_10_00_04/source/third_party/CMSIS/Core/Include\" -I\"C:/TI/mspm0_sdk_2_10_00_04/source\" -isystem\"E:/ti/ccs2050/ccs/tools/compiler/ti-cgt-armllvm_4.0.4.LTS/include/armv7em-ti-none-eabihf/c++/v1\" -isystem\"E:/ti/ccs2050/ccs/tools/compiler/ti-cgt-armllvm_4.0.4.LTS/include/c++/v1\" -isystem\"E:/ti/ccs2050/ccs/tools/compiler/ti-cgt-armllvm_4.0.4.LTS/lib/clang/18/include\" -isystem\"E:/ti/ccs2050/ccs/tools/compiler/ti-cgt-armllvm_4.0.4.LTS/include/c\" -xc",
+      "file"      : "C:/Users/37558/workspace_ccstheia/01_LED_completed/empty.c"
+   }
+]
