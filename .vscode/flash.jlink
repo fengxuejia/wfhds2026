@@ -1,0 +1,5 @@
+r
+loadfile Debug/01_LED_completed.out
+r
+g
+exit

@@ -1,0 +1,40 @@
+{
+    "EIDE.ARM.GCC.InstallDirectory": "D:/CCS/ccs/tools/compiler/ti-cgt-armllvm_4.0.4.LTS",
+    "EIDE.JLink.InstallDirectory": "D:/JLink_V938a",
+    "eide.debugger": "jlink",
+    "eide.jlink.device": "MSPM0G3507",
+    "eide.jlink.interface": "SWD",
+    "eide.jlink.speed": 4000,
+    "eide.openocd.interface": "cmsis-dap",
+    "eide.openocd.target": "MSPM0G3507",
+    "eide.debuggerProfiles": {
+        "jlink": {
+            "debugger": "jlink",
+            "device": "MSPM0G3507",
+            "interface": "SWD",
+            "speed": 4000
+        },
+        "daplink": {
+            "debugger": "openocd",
+            "interface": "cmsis-dap",
+            "target": "MSPM0G3507"
+        }
+    },
+    "EIDE.OpenOCD.ExePath": "",
+    "EIDE.FlashProfiles": [
+        {
+            "name": "J-Link",
+            "uploader": "JLink",
+            "device": "MSPM0G3507",
+            "interface": "SWD",
+            "speed": 4000
+        },
+        {
+            "name": "CMSIS-DAP / OpenOCD",
+            "uploader": "OpenOCD",
+            "interface": "cmsis-dap",
+            "target": "MSPM0G3507"
+        }
+    ],
+    "C_Cpp.default.configurationProvider": "ms-vscode.makefile-tools"
+}

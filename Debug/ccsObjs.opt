@@ -1,6 +1,15 @@
 "./empty.o"
 "./ti_msp_dl_config.o"
 "./startup_mspm0g350x_ticlang.o"
+"./APP/LINE_FOLLOW/line_follow.o"
+"./APP/PID/pid.o"
+"./HARDWARE/BUTTON/button.o"
+"./HARDWARE/ENCODER/encoder.o"
+"./HARDWARE/I2C/i2c.o"
+"./HARDWARE/LED/led.o"
+"./HARDWARE/MOTOR/motor.o"
+"./HARDWARE/OLED/oled.o"
+"./HARDWARE/TIMER/timer.o"
 -l"./device_linker.cmd"
 -ldevice.cmd.genlibs
 -llibc.a

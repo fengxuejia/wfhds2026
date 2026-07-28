@@ -1,0 +1,5 @@
+# FIXED
+
+APP/LINE_FOLLOW/line_follow.o: ../APP/LINE_FOLLOW/line_follow.c \
+ ../APP/LINE_FOLLOW/line_follow.h
+../APP/LINE_FOLLOW/line_follow.h:

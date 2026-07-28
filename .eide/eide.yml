@@ -1,0 +1,122 @@
+version: "4.1"
+name: "tidaima"
+type: ARM
+deviceName: MSPM0G3507
+packDir: null
+srcDirs:
+  - .
+  - HARDWARE
+  - APP
+  - Debug
+virtualFolder:
+  name: "<virtual_root>"
+  files: []
+  folders: []
+dependenceList:
+  - groupName: custom
+    depList:
+      - name: "CCS/MSPM0"
+        incList:
+          - "D:/CCS/mspm0_sdk_2_10_00_04/source"
+          - "D:/CCS/mspm0_sdk_2_10_00_04/source/third_party/CMSIS/Core/Include"
+          - "D:/CCS/ccs/tools/compiler/ti-cgt-armllvm_4.0.4.LTS/include"
+          - "${workspaceFolder}"
+          - "${workspaceFolder}/Debug"
+          - "${workspaceFolder}/HARDWARE/LED"
+          - "${workspaceFolder}/HARDWARE/UART"
+          - "${workspaceFolder}/HARDWARE/TIMER"
+          - "${workspaceFolder}/HARDWARE/I2C"
+          - "${workspaceFolder}/HARDWARE/MOTOR"
+          - "${workspaceFolder}/HARDWARE/ENCODER"
+          - "${workspaceFolder}/HARDWARE/OLED"
+          - "${workspaceFolder}/HARDWARE/BUTTON"
+          - "${workspaceFolder}/APP/PROTOCOL"
+          - "${workspaceFolder}/APP/LINE_FOLLOW"
+          - "${workspaceFolder}/APP/PID"
+        libList: []
+        defineList:
+          - "__MSPM0G3507__"
+  - groupName: build-in
+    depList: []
+outDir: build
+autoBuild: false
+miscInfo:
+  uid: null
+targets:
+  Debug:
+    excludeList: []
+    toolchain: LLVM_ARM
+    toolchainConfig:
+      version: 2
+      global:
+        microcontroller-cpu: cortex-m0+
+        microcontroller-fpu: cortex-m0+
+        arm-arch: armv6-m
+        float-abi: soft
+      c/cpp-compiler:
+        defines:
+          - "__MSPM0G3507__"
+        includes:
+          - "D:/CCS/mspm0_sdk_2_10_00_04/source"
+      linker:
+        linker-script: "Debug/device_linker.cmd"
+      otherArgs:
+        - "@Debug/device.opt"
+    toolchainConfigMap: {}
+    uploader: JLink
+    uploadConfig:
+      bin: "Debug/01_LED_completed.out"
+      target: MSPM0G3507
+      protocol: SWD
+      speed: 4000
+      baseAddr: "0x00000000"
+      allowEraseAll: false
+      otherOptions: ""
+    uploadConfigMap:
+      JLink:
+        bin: "Debug/01_LED_completed.out"
+        target: MSPM0G3507
+        protocol: SWD
+        speed: 4000
+        baseAddr: "0x00000000"
+        allowEraseAll: false
+        otherOptions: ""
+      OpenOCD:
+        bin: "Debug/01_LED_completed.out"
+        target: "openocd/target/mspm0g3507.cfg"
+        interface: "openocd/interface/cmsis-dap.cfg"
+        baseAddr: "0x00000000"
+        otherCmds: ""
+    cppPreprocessAttrs:
+      name: default
+      incList: []
+      libList: []
+      defineList:
+        - "__MSPM0G3507__"
+    builderOptions: {}
+    settings:
+      debugger: cortex-debug
+  Release:
+    excludeList: []
+    toolchain: LLVM_ARM
+    toolchainConfig: {}
+    toolchainConfigMap: {}
+    uploader: JLink
+    uploadConfig: {}
+    uploadConfigMap: {}
+    cppPreprocessAttrs:
+      name: default
+      incList: []
+      libList: []
+      defineList: []
+    builderOptions: {}
+    settings:
+      debugger: cortex-debug
+mode: Debug
+excludeList: []
+toolchain: LLVM_ARM
+toolchainConfig: {}
+toolchainConfigMap: {}
+uploader: JLink
+uploadConfig: {}
+uploadConfigMap: {}

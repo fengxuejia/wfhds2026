@@ -1,0 +1,105 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Flash MSPM0G3507 with DAPLink",
+            "type": "shell",
+            "command": "D:/Python/python.exe",
+            "args": [
+                "-m",
+                "pyocd",
+                "flash",
+                "--pack",
+                "${workspaceFolder}/tools/packs/TexasInstruments.MSPM0G1X0X_G3X0X_DFP.1.3.1.pack",
+                "-t",
+                "MSPM0G3507",
+                "-f",
+                "1000k",
+                "-M",
+                "halt",
+                "-e",
+                "sector",
+                "--format",
+                "elf",
+                "${workspaceFolder}/Debug/01_LED_completed.out"
+            ],
+            "problemMatcher": [],
+            "group": "build",
+            "detail": "Flash the CCS output through a CMSIS-DAP/DAPLink probe."
+        },
+        {
+            "label": "Fast Flash MSPM0G3507 with J-Link",
+            "type": "process",
+            "command": "D:/JLink_V938a/JLink.exe",
+            "args": [
+                "-device",
+                "MSPM0G3507",
+                "-if",
+                "SWD",
+                "-speed",
+                "1000",
+                "-autoconnect",
+                "1",
+                "-NoGui",
+                "1",
+                "-CommanderScript",
+                "${workspaceFolder}/.vscode/flash.jlink"
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "problemMatcher": [],
+            "group": "build",
+            "detail": "Fast incremental flash through J-Link at 8 MHz SWD."
+        },
+        {
+            "label": "Check DAPLink",
+            "type": "shell",
+            "command": "D:/Python/python.exe",
+            "args": [
+                "-m",
+                "pyocd",
+                "list"
+            ],
+            "problemMatcher": [],
+            "detail": "List connected CMSIS-DAP probes."
+        },
+        {
+            "label": "Erase MSPM0G3507",
+            "type": "shell",
+            "command": "D:/Python/python.exe",
+            "args": [
+                "-m",
+                "pyocd",
+                "erase",
+                "--pack",
+                "${workspaceFolder}/tools/packs/TexasInstruments.MSPM0G1X0X_G3X0X_DFP.1.3.1.pack",
+                "-t",
+                "MSPM0G3507",
+                "-f",
+                "1000k",
+                "--chip"
+            ],
+            "problemMatcher": [],
+            "detail": "Erase the complete MSPM0G3507 chip."
+        },
+        {
+            "label": "Reset MSPM0G3507",
+            "type": "shell",
+            "command": "D:/Python/python.exe",
+            "args": [
+                "-m",
+                "pyocd",
+                "reset",
+                "--pack",
+                "${workspaceFolder}/tools/packs/TexasInstruments.MSPM0G1X0X_G3X0X_DFP.1.3.1.pack",
+                "-t",
+                "MSPM0G3507",
+                "-f",
+                "1000k"
+            ],
+            "problemMatcher": [],
+            "detail": "Reset the target through DAPLink."
+        }
+    ]
+}

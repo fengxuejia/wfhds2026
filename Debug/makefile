@@ -4,7 +4,7 @@
 
 SHELL = cmd.exe
 
-CG_TOOL_ROOT := E:/ti/ccs2050/ccs/tools/compiler/ti-cgt-armllvm_4.0.4.LTS
+CG_TOOL_ROOT := D:/CCS/ccs/tools/compiler/ti-cgt-armllvm_4.0.4.LTS
 
 GEN_OPTS__FLAG := @"./device.opt" 
 GEN_CMDS__FLAG := -Wl,-l"./device_linker.cmd" 
@@ -13,6 +13,15 @@ ORDERED_OBJS += \
 "./empty.o" \
 "./ti_msp_dl_config.o" \
 "./startup_mspm0g350x_ticlang.o" \
+"./APP/LINE_FOLLOW/line_follow.o" \
+"./APP/PID/pid.o" \
+"./HARDWARE/BUTTON/button.o" \
+"./HARDWARE/ENCODER/encoder.o" \
+"./HARDWARE/I2C/i2c.o" \
+"./HARDWARE/LED/led.o" \
+"./HARDWARE/MOTOR/motor.o" \
+"./HARDWARE/OLED/oled.o" \
+"./HARDWARE/TIMER/timer.o" \
 $(GEN_CMDS__FLAG) \
 -Wl,-ldevice.cmd.genlibs \
 -Wl,-llibc.a \
@@ -25,7 +34,25 @@ RMDIR := RMDIR /S/Q
 # All of the sources participating in the build are defined here
 -include sources.mk
 -include subdir_vars.mk
+-include APP/LINE_FOLLOW/subdir_vars.mk
+-include APP/PID/subdir_vars.mk
+-include HARDWARE/BUTTON/subdir_vars.mk
+-include HARDWARE/ENCODER/subdir_vars.mk
+-include HARDWARE/I2C/subdir_vars.mk
+-include HARDWARE/LED/subdir_vars.mk
+-include HARDWARE/MOTOR/subdir_vars.mk
+-include HARDWARE/OLED/subdir_vars.mk
+-include HARDWARE/TIMER/subdir_vars.mk
 -include subdir_rules.mk
+-include APP/LINE_FOLLOW/subdir_rules.mk
+-include APP/PID/subdir_rules.mk
+-include HARDWARE/BUTTON/subdir_rules.mk
+-include HARDWARE/ENCODER/subdir_rules.mk
+-include HARDWARE/I2C/subdir_rules.mk
+-include HARDWARE/LED/subdir_rules.mk
+-include HARDWARE/MOTOR/subdir_rules.mk
+-include HARDWARE/OLED/subdir_rules.mk
+-include HARDWARE/TIMER/subdir_rules.mk
 -include objects.mk
 
 ifneq ($(MAKECMDGOALS),clean)
@@ -121,24 +148,38 @@ EXE_OUTPUTS += \
 EXE_OUTPUTS__QUOTED += \
 "01_LED_completed.out" 
 
+BIN_OUTPUTS += \
+01_LED_completed.hex 
+
+BIN_OUTPUTS__QUOTED += \
+"01_LED_completed.hex" 
+
 
 # All Target
 all: $(OBJS) $(GEN_CMDS)
-	@$(MAKE) --no-print-directory -Onone "01_LED_completed.out"
+	@$(MAKE) --no-print-directory -Onone "01_LED_completed.out" secondary-outputs
 
 # Tool invocations
 01_LED_completed.out: $(OBJS) $(GEN_CMDS)
 	@echo 'Arm Linker - building target: "$@"'
-	"E:/ti/ccs2050/ccs/tools/compiler/ti-cgt-armllvm_4.0.4.LTS/bin/tiarmclang.exe" @"device.opt"  -march=thumbv6m -mcpu=cortex-m0plus -mfloat-abi=soft -mlittle-endian -mthumb -O2 -gdwarf-3 -Wall -Wl,-m"01_LED_completed.map" -Wl,-i"C:/TI/mspm0_sdk_2_10_00_04/source" -Wl,-i"C:/Users/37558/workspace_ccstheia/01_LED_completed" -Wl,-i"C:/Users/37558/workspace_ccstheia/01_LED_completed/Debug/syscfg" -Wl,-i"E:/ti/ccs2050/ccs/tools/compiler/ti-cgt-armllvm_4.0.4.LTS/lib" -Wl,--diag_wrap=off -Wl,--display_error_number -Wl,--warn_sections -Wl,--xml_link_info="01_LED_completed_linkInfo.xml" -Wl,--rom_model -o "01_LED_completed.out" $(ORDERED_OBJS)
+	"D:/CCS/ccs/tools/compiler/ti-cgt-armllvm_4.0.4.LTS/bin/tiarmclang.exe" @"device.opt"  -march=thumbv6m -mcpu=cortex-m0plus -mfloat-abi=soft -mlittle-endian -mthumb -O2 -gdwarf-3 -Wall -Wl,-m"01_LED_completed.map" -Wl,-i"D:/CCS/mspm0_sdk_2_10_00_04/source" -Wl,-i"D:/TI/tidaima" -Wl,-i"D:/TI/tidaima/Debug/syscfg" -Wl,-i"D:/CCS/ccs/tools/compiler/ti-cgt-armllvm_4.0.4.LTS/lib" -Wl,--diag_wrap=off -Wl,--display_error_number -Wl,--warn_sections -Wl,--xml_link_info="01_LED_completed_linkInfo.xml" -Wl,--rom_model -o "01_LED_completed.out" $(ORDERED_OBJS)
 	@echo 'Finished building target: "$@"'
+	@echo ' '
+
+01_LED_completed.hex: $(EXE_OUTPUTS)
+	@echo 'Arm Hex Utility - building secondary target: "$@"'
+	"D:/CCS/ccs/tools/compiler/ti-cgt-armllvm_4.0.4.LTS/bin/tiarmhex.exe" --diag_wrap=off -o "01_LED_completed.hex" $(EXE_OUTPUTS__QUOTED)
+	@echo 'Finished building secondary target: "$@"'
 	@echo ' '
 
 # Other Targets
 clean:
-	-$(RM) $(GEN_MISC_FILES__QUOTED)$(GEN_FILES__QUOTED)$(EXE_OUTPUTS__QUOTED)
-	-$(RM) "empty.o" "ti_msp_dl_config.o" "startup_mspm0g350x_ticlang.o" 
-	-$(RM) "empty.d" "ti_msp_dl_config.d" "startup_mspm0g350x_ticlang.d" 
+	-$(RM) $(GEN_MISC_FILES__QUOTED)$(BIN_OUTPUTS__QUOTED)$(GEN_FILES__QUOTED)$(EXE_OUTPUTS__QUOTED)
+	-$(RM) "empty.o" "ti_msp_dl_config.o" "startup_mspm0g350x_ticlang.o" "APP\LINE_FOLLOW\line_follow.o" "APP\PID\pid.o" "HARDWARE\BUTTON\button.o" "HARDWARE\ENCODER\encoder.o" "HARDWARE\I2C\i2c.o" "HARDWARE\LED\led.o" "HARDWARE\MOTOR\motor.o" "HARDWARE\OLED\oled.o" "HARDWARE\TIMER\timer.o" 
+	-$(RM) "empty.d" "ti_msp_dl_config.d" "startup_mspm0g350x_ticlang.d" "APP\LINE_FOLLOW\line_follow.d" "APP\PID\pid.d" "HARDWARE\BUTTON\button.d" "HARDWARE\ENCODER\encoder.d" "HARDWARE\I2C\i2c.d" "HARDWARE\LED\led.d" "HARDWARE\MOTOR\motor.d" "HARDWARE\OLED\oled.d" "HARDWARE\TIMER\timer.d" 
 	-@echo ' '
+
+secondary-outputs: $(BIN_OUTPUTS)
 
 .PHONY: all clean dependents
 .SECONDARY:

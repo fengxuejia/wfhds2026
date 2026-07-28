@@ -119,4 +119,13 @@ GEN_OPTS__QUOTED :=
 # Every subdirectory with source files must be described here
 SUBDIRS := \
 . \
+APP/LINE_FOLLOW \
+APP/PID \
+HARDWARE/BUTTON \
+HARDWARE/ENCODER \
+HARDWARE/I2C \
+HARDWARE/LED \
+HARDWARE/MOTOR \
+HARDWARE/OLED \
+HARDWARE/TIMER \
 
